@@ -11,38 +11,36 @@ Sentiment Analysis on Movie Reviews（Kaggle）学习项目
 *   RoBERTa GPU 微调 Public Score（示例）：`0.70138`
     
 
-> 你可以把本仓库当作一个“可复现的 NLP 比赛入门模板”。
+> 你可以把本仓库当作一个"可复现的 NLP 比赛入门模板"。
 
 * * *
 
-目录
---
+## 目录
 
-*   项目目标
+*   [项目目标](#项目目标)
     
-*   任务简介
+*   [任务简介](#任务简介)
     
-*   仓库结构
+*   [仓库结构](#仓库结构)
     
-*   环境与依赖
+*   [环境与依赖](#环境与依赖)
     
-*   快速开始
+*   [快速开始](#快速开始)
     
-*   Baseline：TF-IDF + 线性模型（可提交）
+*   [Baseline：TF-IDF + 线性模型（可提交）](#baseline-tf-idf--线性模型可提交)
     
-*   GPU 提分：RoBERTa 微调（Transformers，可提交）
+*   [GPU 提分：RoBERTa 微调（Transformers，可提交）](#gpu-提分roberta-微调transformers可提交)
     
-*   提交到 Kaggle
+*   [提交到 Kaggle](#提交到-kaggle)
     
-*   常见问题（Windows / GPU / Transformers）
+*   [常见问题（Windows / GPU / Transformers）](#常见问题windows--gpu--transformers)
     
-*   进一步改进方向
+*   [进一步改进方向](#进一步改进方向)
     
 
 * * *
 
-项目目标
-----
+## 项目目标
 
 1.  学会 Kaggle NLP 比赛的标准流程：  
     环境搭建 → 读数据 → 划分验证集 → 训练 → 生成提交 → 提分迭代
@@ -56,8 +54,7 @@ Sentiment Analysis on Movie Reviews（Kaggle）学习项目
 
 * * *
 
-任务简介
-----
+## 任务简介
 
 *   输入：电影评论的短语（`Phrase`）
     
@@ -79,8 +76,7 @@ Sentiment Analysis on Movie Reviews（Kaggle）学习项目
 
 * * *
 
-仓库结构
-----
+## 仓库结构
 
     .
     ├─ src/
@@ -97,8 +93,7 @@ Sentiment Analysis on Movie Reviews（Kaggle）学习项目
 
 * * *
 
-环境与依赖
------
+## 环境与依赖
 
 *   Windows 11 + PowerShell（本 README 默认 PowerShell）
     
@@ -117,8 +112,7 @@ Sentiment Analysis on Movie Reviews（Kaggle）学习项目
 
 * * *
 
-快速开始
-----
+## 快速开始
 
 ### 1) 克隆仓库
 
@@ -130,7 +124,7 @@ Sentiment Analysis on Movie Reviews（Kaggle）学习项目
 
     python -m venv .venv
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
-    .\.venv\Scripts\Activate.ps1
+    .\\.venv\\Scripts\\Activate.ps1
     python -m pip install -U pip wheel
     
 
@@ -149,18 +143,17 @@ Sentiment Analysis on Movie Reviews（Kaggle）学习项目
 
 下载后检查文件是否齐全：
 
-    dir .\data
+    dir .\\data
     # 应包含 train.tsv / test.tsv / sampleSubmission.csv
     
 
 * * *
 
-Baseline：TF-IDF + 线性模型（可提交）
----------------------------
+## Baseline：TF-IDF + 线性模型（可提交）
 
 ### 运行 baseline 并生成提交文件
 
-    python .\src\baseline.py
+    python .\\src\\baseline.py
     
 
 脚本会：
@@ -183,8 +176,7 @@ Baseline：TF-IDF + 线性模型（可提交）
 
 * * *
 
-GPU 提分：RoBERTa 微调（Transformers，可提交）
------------------------------------
+## GPU 提分：RoBERTa 微调（Transformers，可提交）
 
 ### 1) 安装 PyTorch GPU（示例：cu124）
 
@@ -200,7 +192,7 @@ GPU 提分：RoBERTa 微调（Transformers，可提交）
 
 ### 2) 运行训练脚本并生成提交文件
 
-    python .\src\train_roberta_gpu.py
+    python .\\src\\train_roberta_gpu.py
     
 
 脚本会：
@@ -230,8 +222,7 @@ GPU 提分：RoBERTa 微调（Transformers，可提交）
 
 * * *
 
-提交到 Kaggle
-----------
+## 提交到 Kaggle
 
 1.  进入比赛页面 → Submit Predictions
     
@@ -246,7 +237,7 @@ GPU 提分：RoBERTa 微调（Transformers，可提交）
 
 提交文件格式检查（可选）：
 
-    Get-Content .\submissions\submission_roberta_base_gpu.csv -TotalCount 5
+    Get-Content .\\submissions\\submission_roberta_base_gpu.csv -TotalCount 5
     
 
 应类似：
@@ -259,8 +250,7 @@ GPU 提分：RoBERTa 微调（Transformers，可提交）
 
 * * *
 
-常见问题（Windows / GPU / Transformers）
-----------------------------------
+## 常见问题（Windows / GPU / Transformers）
 
 ### 1) Tokenizer 报错：`TextEncodeInput must be Union[...]`
 
@@ -276,7 +266,7 @@ Transformers 不同版本参数名可能变化。
 ### 3) Windows 下 Hugging Face cache symlink 警告
 
 这是警告，不影响训练。  
-如需优化缓存，可开启 Windows “开发者模式”或以管理员运行。
+如需优化缓存，可开启 Windows "开发者模式"或以管理员运行。
 
 ### 4) GitHub 推送网络问题
 
@@ -289,8 +279,7 @@ Transformers 不同版本参数名可能变化。
 
 * * *
 
-进一步改进方向
--------
+## 进一步改进方向
 
 *   更稳定评估：GroupKFold（按 `SentenceId` 分组的 K 折交叉验证）
     
@@ -300,5 +289,4 @@ Transformers 不同版本参数名可能变化。
     
 *   工程化：把训练参数做成命令行参数（如 `--model --lr --epochs --max_length`），并记录实验日志
     
-
 * * *
