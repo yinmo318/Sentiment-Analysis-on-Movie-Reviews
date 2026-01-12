@@ -27,7 +27,7 @@ Sentiment Analysis on Movie Reviews（Kaggle）学习项目
     
 *   [快速开始](#快速开始)
     
-*   [Baseline：TF-IDF + 线性模型（可提交）](#baseline：tf-idf + 线性模型（可提交）)
+*   [Baseline：TF-IDF + 线性模型（可提交）](#baseline--tf-idf---线性模型（可提交）)
     
 *   [GPU 提分：RoBERTa 微调（Transformers，可提交）](#gpu-提分roberta-微调transformers可提交)
     
